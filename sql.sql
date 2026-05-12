@@ -1,0 +1,22 @@
+CREATE TABLE IF NOT EXISTS print_orders (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  out_trade_no VARCHAR(50) NOT NULL UNIQUE,
+  trade_no VARCHAR(100) DEFAULT NULL,
+  name VARCHAR(50) NOT NULL,
+  phone VARCHAR(30) NOT NULL,
+  address VARCHAR(255) NOT NULL,
+  print_pages VARCHAR(100) DEFAULT '全部',
+  print_type VARCHAR(100) DEFAULT NULL,
+  page_count INT DEFAULT 1,
+  copies INT DEFAULT 1,
+  file_name VARCHAR(255) NOT NULL,
+  tmp_file_path VARCHAR(500) NOT NULL,
+  final_file_path VARCHAR(500) DEFAULT NULL,
+  money DECIMAL(10,2) NOT NULL,
+  remark TEXT DEFAULT NULL,
+  status VARCHAR(20) DEFAULT 'unpaid',
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  paid_at DATETIME DEFAULT NULL,
+  INDEX idx_status (status),
+  INDEX idx_created_at (created_at)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
